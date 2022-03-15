@@ -115,8 +115,8 @@ public class Client {
     }
 
     public static void editPhoneBookByPhone() {
-        System.out.println("Nhập số điện thoại cần sửa:");
         while (true) {
+            System.out.println("Nhập số điện thoại cần sửa:");
             Scanner inputPhone = new Scanner(System.in);
             String phone = inputPhone.nextLine();
             int check = -1;
@@ -166,21 +166,24 @@ public class Client {
     }
 
     public static void removePhoneBookByPhone() {
-        System.out.println("Nhập số điện thoại cần xóa:");
-        Scanner inputPhone = new Scanner(System.in);
-        String phone = inputPhone.nextLine();
-        int check = -1;
-        if (PhoneBookManager.getPhoneBookByPhone(phone) == check) {
-            System.err.println("Số điện thoại không có trong danh bạ");
-        } else {
-            int index = PhoneBookManager.getPhoneBookByPhone(phone);
-            Scanner inputChoice = new Scanner(System.in);
-            System.out.println("Nhấn 'Y' để xóa");
-            String str = inputChoice.nextLine();
-            if (str.equals("Y")) {
-                PhoneBookManager.deletePhoneBook(index);
+        while (true) {
+            System.out.println("Nhập số điện thoại cần xóa:");
+            Scanner inputPhone = new Scanner(System.in);
+            String phone = inputPhone.nextLine();
+            int check = -1;
+            if (PhoneBookManager.getPhoneBookByPhone(phone) == check) {
+                System.err.println("Số điện thoại không có trong danh bạ");
             } else {
-                System.exit(0);
+                int index = PhoneBookManager.getPhoneBookByPhone(phone);
+                Scanner inputChoice = new Scanner(System.in);
+                System.out.println("Nhấn 'Y' để xóa");
+                String str = inputChoice.nextLine();
+                if (str.equals("Y")) {
+                    PhoneBookManager.deletePhoneBook(index);
+                } else {
+                    System.exit(0);
+                }
+                break;
             }
         }
     }
